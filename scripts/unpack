@@ -112,7 +112,7 @@ if [ -d "$SOURCES/$1" -o -d "$PKG_DIR/sources" -o -n "$PKG_GIT_URL" ]; then
     GIT_ORIG_DIR=""
     GIT_PREV_LOCATION=$(pwd)
     # cycle through folders that match $PKG_NAME in $BUILD until we find the right one
-    for f in $BUILD/$1-* ; do
+    for f in $BUILD/$1-*/ ; do
       echo "**** debug: checking folder '$f':"
       if [ -d $f ]; then
         echo "**** debug: '$f' is folder"
@@ -138,7 +138,7 @@ if [ -d "$SOURCES/$1" -o -d "$PKG_DIR/sources" -o -n "$PKG_GIT_URL" ]; then
     if [ -d "$GIT_ORIG_DIR" -a -n "$GIT_ORIG_DIR" ]; then
       # rename the original folder to match current version
       echo "**** debug: Rename '$GIT_ORIG_DIR' to '$BUILD/$PKG_NAME-$PKG_VERSION'"
-      if [ ! "$GIT_ORIG_DIR" = "$BUILD/$PKG_NAME-$PKG_VERSION" ]; then
+      if [ ! "$GIT_ORIG_DIR" = "$BUILD/$PKG_NAME-$PKG_VERSION/" ]; then
         mv $GIT_ORIG_DIR $BUILD/$PKG_NAME-$PKG_VERSION
       fi
       cd $BUILD/$PKG_NAME-$PKG_VERSION
@@ -147,8 +147,6 @@ if [ -d "$SOURCES/$1" -o -d "$PKG_DIR/sources" -o -n "$PKG_GIT_URL" ]; then
       git clean -fdx
       echo "**** debug: git checkout -- ."
       git checkout -- .
-      echo "**** debug: git checkout master"
-      git checkout master
       # pull changes
       echo "**** debug: git pull"
       git pull
@@ -159,7 +157,7 @@ if [ -d "$SOURCES/$1" -o -d "$PKG_DIR/sources" -o -n "$PKG_GIT_URL" ]; then
     git clone $PKG_GIT_URL $BUILD/$PKG_NAME-$PKG_VERSION/
     cd $BUILD/$PKG_NAME-$PKG_VERSION/
     fi
-    git checkout $PKG_VERSION
+    git reset --hard $PKG_VERSION
     git submodule update --init --recursive
     cd $ROOT
   elif [ -z "$PKG_URL" ]; then
