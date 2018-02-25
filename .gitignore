@@ -31,3 +31,6 @@ mkpkg-temp
 
 # crap
 .DS_Store
+
+# lockfile for build jobs
+lakka_job_is_running.lock

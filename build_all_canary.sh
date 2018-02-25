@@ -46,7 +46,7 @@ logbase=""
 nightstart=$(date +%s)
 declare -i bad_builds=0
 declare -i good_builds=0
-lockfile="$HOME/lakka_build_job.lock"
+lockfile="$buildroot/lakka_job_is_running.lock"
 #
 # END OF CONFIGURATION
 #
