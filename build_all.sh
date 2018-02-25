@@ -1,6 +1,12 @@
 #!/bin/bash
 
-rm -rf target/
+echo "Cleaining target/ folder:"
+for f in target/* ; do
+  if [ -f "$f" ] ; then
+    rm -v "$f"
+  fi
+done
+echo "Done."
 
 >&2 echo "Generic.x86_64"
 DISTRO=Lakka PROJECT=Generic ARCH=x86_64 make image -j8
