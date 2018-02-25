@@ -147,6 +147,8 @@ if [ -d "$SOURCES/$1" -o -d "$PKG_DIR/sources" -o -n "$PKG_GIT_URL" ]; then
       git clean -fdx
       echo "**** debug: git checkout -- ."
       git checkout -- .
+      echo "**** debug: git checkout master"
+      git checkout master
       # pull changes
       echo "**** debug: git pull"
       git pull
@@ -157,7 +159,7 @@ if [ -d "$SOURCES/$1" -o -d "$PKG_DIR/sources" -o -n "$PKG_GIT_URL" ]; then
     git clone $PKG_GIT_URL $BUILD/$PKG_NAME-$PKG_VERSION/
     cd $BUILD/$PKG_NAME-$PKG_VERSION/
     fi
-    git reset --hard $PKG_VERSION
+    git checkout $PKG_VERSION
     git submodule update --init --recursive
     cd $ROOT
   elif [ -z "$PKG_URL" ]; then
