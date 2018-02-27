@@ -18,7 +18,7 @@
 #  http://www.gnu.org/copyleft/gpl.html
 ################################################################################
 
-PKG_NAME="desmume"
+PKG_NAME="desmume2015"
 PKG_VERSION="69658a2"
 PKG_REV="1"
 PKG_ARCH="any"
