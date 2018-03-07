@@ -10,7 +10,7 @@ distro="Lakka"
 # What branch are we using?
 upstream_branch="Lakka-V2.1-dev"
 branch="canary_builds"
-dont_update_packages=""
+dont_update_packages="citra"
 # Where is the build folder with cloned git repository?
 buildroot="$(pwd)"
 # Where do we store the images?
