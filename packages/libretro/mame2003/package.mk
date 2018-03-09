@@ -35,7 +35,7 @@ PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 
 make_target() {
-  make platform="unix" ARCH="" CC="$CC" NATIVE_CC="$CC" LD="$CC"
+  make ARCH="" CC="$CC" NATIVE_CC="$CC" LD="$CC"
 }
 
 makeinstall_target() {
