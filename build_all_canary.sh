@@ -152,17 +152,24 @@ timehuman() {
 	local hour=$((t/60/60%24))
 	local minute=$((t/60%60))
 	local second=$((t%60))
+	local ats=0 # add trailing space
 	output=""
 	if [ $day -gt 0 ]; then
-		[ $day = 1 ] && output="${output}$day day " || output="${output}$day days "
+		[ $day = 1 ] && output="${output}$day day" || output="${output}$day days"
+		ats=1
 	fi
 	if [ $hour -gt 0 ]; then
-		[ $hour = 1 ] && output="${output}$hour hour " || output="${output}$hour hours "
+		[ $ats -gt 0 ] && output="$output "
+		[ $hour = 1 ] && output="${output}$hour hour" || output="${output}$hour hours"
+		ats=1
 	fi
 	if [ $minute -gt 0 ]; then
-		[ $minute = 1 ] && output="${output}$minute minute " || output="${output}$minute minutes "
+		[ $ats -gt 0 ] && output="$output "
+		[ $minute = 1 ] && output="${output}$minute minute" || output="${output}$minute minutes"
+		ats=1
 	fi
 	if [ $second -gt 0 ] ; then
+		[ $ats -gt 0 ] && output="$output "
 		[ $second = 1 ] && output="${output}$second second" || output="${output}$second seconds"
 	fi
 }
