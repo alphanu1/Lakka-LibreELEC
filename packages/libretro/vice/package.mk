@@ -19,7 +19,7 @@
 ################################################################################
 
 PKG_NAME="vice"
-PKG_VERSION="bea269d"
+PKG_VERSION="bd62332"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPLv2"
@@ -41,6 +41,8 @@ make_target() {
   fi
   make EMUTYPE=x64
   make EMUTYPE=x128
+  make EMUTYPE=xplus4
+  make EMUTYPE=xvic
 }
 
 makeinstall_target() {
