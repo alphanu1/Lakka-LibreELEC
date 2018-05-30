@@ -160,7 +160,9 @@ if [ -d "$SOURCES/$1" -o -d "$PKG_DIR/sources" -o -n "$PKG_GIT_URL" ]; then
     cd $BUILD/$PKG_NAME-$PKG_VERSION/
     fi
     git checkout $PKG_VERSION
-    git submodule update --init --recursive
+    if [ ! "$1" = "retroarch" ] ; then
+      git submodule update --init --recursive
+    fi
     cd $ROOT
   elif [ -z "$PKG_URL" ]; then
     mkdir -p "${BUILD}/${PKG_NAME}-${PKG_VERSION}"
