@@ -1,0 +1,36 @@
+diff --git a/core/libretro-common/glsm/glsm.c b/core/libretro-common/glsm/glsm.c
+index e7114a0..42db0fe 100644
+--- a/core/libretro-common/glsm/glsm.c
++++ b/core/libretro-common/glsm/glsm.c
+@@ -223,7 +223,12 @@ GLenum rglGetError(void)
+  * OpenGLES  : 3.0
+  */
+ void rglGetInteger64v(	GLenum pname,
+- 	GLint64 * data)
++#if defined(HAVE_OPENGLES)
++  	GLint
++#else
++ 	GLint64
++#endif
++  	  * data)
+ {
+ #if defined(HAVE_OPENGL) || defined(HAVE_OPENGLES) && defined(HAVE_OPENGLES3)
+    glGetInteger64v(pname, data);
+diff --git a/core/libretro-common/include/glsm/glsmsym.h b/core/libretro-common/include/glsm/glsmsym.h
+index 87a8abb..f6f0477 100644
+--- a/core/libretro-common/include/glsm/glsmsym.h
++++ b/core/libretro-common/include/glsm/glsmsym.h
+@@ -464,7 +464,12 @@ void rglBindSampler(	GLuint unit,
+ void rglGenSamplers(	GLsizei n,
+  	GLuint *samplers);
+ void rglGetInteger64v(	GLenum pname,
+- 	GLint64 * data);
++#if defined(HAVE_OPENGLES)
++	GLint
++#else
++ 	GLint64
++#endif
++	 * data);
+ 
+ RETRO_END_DECLS
+ 
