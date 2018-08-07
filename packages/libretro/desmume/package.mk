@@ -19,7 +19,7 @@
 ################################################################################
 
 PKG_NAME="desmume"
-PKG_VERSION="07162f4"
+PKG_VERSION="f546d2d"
 PKG_REV="1"
 PKG_ARCH="x86_64 i386"
 PKG_LICENSE="GPLv2"
