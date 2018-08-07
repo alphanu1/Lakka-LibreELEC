@@ -49,7 +49,7 @@ if [ "$AVAHI_DAEMON" = yes ]; then
 fi
 
 if [ "$OPENGLES" == "no" ]; then
-  RETROARCH_GL="--enable-kms"
+  RETROARCH_GL="--enable-kms --enable-x11"
 elif [ "$OPENGLES" == "bcm2835-driver" ]; then
   RETROARCH_GL="--enable-opengles --disable-kms --disable-x11"
   CFLAGS="$CFLAGS -I$SYSROOT_PREFIX/usr/include/interface/vcos/pthreads \
